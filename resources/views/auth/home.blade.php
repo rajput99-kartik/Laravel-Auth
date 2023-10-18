@@ -1,4 +1,4 @@
-@include('layout.app');
+@include('layout.app')
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@
 
     <style>
         a {
-            color: white;
+            color: ;
             text-decoration: none;
         }
     </style>
@@ -53,15 +53,19 @@
                         <label for="inputPassword">Password:</label>
                         <input type="password" class="form-control col-sm-6" id="inputPassword" placeholder="Password">
                     </div>
+                    <div class="mt-1">
+                        <button class="btn btn-sm" style="color: blue; background: none; border: none;"><a href="{{route('auth.forgot')}}">Forgot password?</a></button>
+                    </div>
                     <br>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                      
-                            <button class="btn btn-primary">  <a href="{{route('auth.register')}}">Create Account </a></button>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                       
                         
                     </div>
-                    <div class="row">
-                       
+                    <br>
+                    <div class="">
+                        <label class="custom-control-label" for="customControlInline">Don't Have an Account?</label>
+                            <button class="btn btn-primary btn-sm" >  <a style="color: white" href="{{route('auth.register')}}">Create Account!</a></button>
                     </div>
                 </form>
 
