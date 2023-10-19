@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("/", [UserController::class,"index"])->name("index");
-Route::get("/register", [UserController::class,"registerUser"])->name("auth.register");
+
+Route::get('/registerUser',[UserController::class, 'registerUser']);
 Route::get("/forgot-password", [UserController::class,"forgotPassword"])->name('auth.forgot');
-Route::get('/submit-register', [UserController::class,'submitRegister'])->name("auth.submitRegister");
+Route::post('/submitRegister',[UserController::class, 'submitRegister'])->name("submit.register");
+Route::post("/loginUser",[UserController::class,"loginUser"])->name("auth.login");

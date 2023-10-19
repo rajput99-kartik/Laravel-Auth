@@ -43,8 +43,11 @@
         </div> --}}
 
         <div class="row justify-content-center">
+            <div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
+                Thank you for getting in touch! 
+              </div>
             <div class="col-md-6">
-                <form>
+                <form id="login_form">
                     <div class="form-group">
                         <label for="inputEmail">Email:</label>
                         <input type="email" class="form-control col-sm-6" id="inputEmail" placeholder="Email">
@@ -65,7 +68,7 @@
                     <br>
                     <div class="">
                         <label class="custom-control-label" for="customControlInline">Don't Have an Account?</label>
-                            <button class="btn btn-primary btn-sm" >  <a style="color: white" href="{{route('auth.register')}}">Create Account!</a></button>
+                            <button class="btn btn-primary btn-sm" >  <a style="color: white" href="{{url('/registerUser')}}">Create Account!</a></button>
                     </div>
                 </form>
 
@@ -76,4 +79,40 @@
     </div>
     
 </body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+<script type="text/javascript">
+
+$('#login_form').on('submit',function(e){
+        
+        e.preventDefault();
+
+       
+        let email = $('#inputEmail').val();
+        console.log(email);
+   
+        let message = $('#inputPassword').val();
+        console.log("abbc");
+        console.log(message);
+    
+        $.ajax({
+      url: "loginUser",
+      type:"POST",
+      data:{
+        "_token": "{{ csrf_token() }}",
+       
+        email:email,
+        
+        message:message,
+      },
+      success:function(response){
+        $('#successMsg').show();
+        console.log(response);
+      }
+      });
+});
+  </script>
+
 </html>
